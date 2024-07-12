@@ -34,6 +34,11 @@ public class AuthManager : MonoBehaviour
         };
 
         // 로그 아웃
+        AuthenticationService.Instance.SignedOut += () =>
+        {
+            messageText.text = "Logout !!!";
+        };
+
         // 로그인 실패
         // 세션 종료
     }
