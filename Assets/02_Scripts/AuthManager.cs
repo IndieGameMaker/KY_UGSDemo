@@ -33,25 +33,25 @@ public class AuthManager : MonoBehaviour
         // 로그인
         AuthenticationService.Instance.SignedIn += () =>
         {
-            messageText.text = $"Player ID:{AuthenticationService.Instance.PlayerId}";
+            messageText.text = $"\nPlayer ID:{AuthenticationService.Instance.PlayerId}";
         };
 
         // 로그 아웃
         AuthenticationService.Instance.SignedOut += () =>
         {
-            messageText.text = "Logout !!!";
+            messageText.text = "\nLogout !!!";
         };
 
         // 로그인 실패
         AuthenticationService.Instance.SignInFailed += (ex) =>
         {
-            messageText.text = $"Login Failed : {ex.Message}";
+            messageText.text = $"\nLogin Failed : {ex.Message}";
         };
 
         // 세션 종료
         AuthenticationService.Instance.Expired += () =>
         {
-            messageText.text = "Player Session Expired !!!";
+            messageText.text = "\nPlayer Session Expired !!!";
         };
 
     }
