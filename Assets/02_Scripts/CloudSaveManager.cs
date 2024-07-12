@@ -6,9 +6,28 @@ using Unity.Services.CloudSave;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public struct PlayerData
+{
+    public string name;
+    public int level;
+    public int xp;
+
+    public List<ItemData> items;
+}
+
+[Serializable]
+public struct ItemData
+{
+    public string name;
+    public int value;
+    public string icon;
+}
+
 public class CloudSaveManager : MonoBehaviour
 {
     [SerializeField] private Button saveButton;
+    [SerializeField] private PlayerData playerData;
 
     void Awake()
     {
