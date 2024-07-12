@@ -39,6 +39,11 @@ public class AuthManager2 : MonoBehaviour
         {
             await SignUpUsernamePassword(userNameText.text, passwordText.text);
         });
+
+        signInButton.onClick.AddListener(async () =>
+        {
+            await SignIn(userNameText.text, passwordText.text);
+        });
     }
 
     // 회원가입
@@ -58,23 +63,24 @@ public class AuthManager2 : MonoBehaviour
         {
             Debug.LogError(ex.Message);
         }
+    }
 
-        // 로그인 로직
-        async Task SignIn(string username, string password)
+    // 로그인 로직
+    async Task SignIn(string username, string password)
+    {
+        try
         {
-            try
-            {
-                await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
-            }
-            catch (AuthenticationException e)
-            {
-                Debug.LogError(e.Message);
-            }
-            catch (RequestFailedException e)
-            {
-                Debug.LogError(e.Message);
-            }
-
+            await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
+            Debug.Log($"로그인 완료 : {AuthenticationService.Instance.PlayerId}");
         }
+        catch (AuthenticationException e)
+        {
+            Debug.LogError(e.Message);
+        }
+        catch (RequestFailedException e)
+        {
+            Debug.LogError(e.Message);
+        }
+
     }
 }
