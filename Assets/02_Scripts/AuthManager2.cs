@@ -5,6 +5,8 @@ using System;
 using Unity.Services.Core;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
+using Random = UnityEngine.Random;
+
 
 public class AuthManager2 : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class AuthManager2 : MonoBehaviour
         {
             await UnityServices.InitializeAsync();
             Debug.Log("UGS 초기화 완료");
+            userNameText.text = PlayerPrefs.GetString("USER_NAME", $"USER_{Random.Range(0, 200):0000}");
         }
         catch (Exception e)
         {
