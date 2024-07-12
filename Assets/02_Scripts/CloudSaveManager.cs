@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Services.CloudSave;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,14 @@ public class CloudSaveManager : MonoBehaviour
             {"gold", 200}
         };
 
-        await
+        try
+        {
+            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+            Debug.Log("데이터 저장 완료");
+        }
+        catch (CloudSaveException e)
+        {
+            Debug.LogError(e.Message);
+        }
     }
 }
