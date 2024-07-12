@@ -33,6 +33,22 @@ public class CloudSaveManager : MonoBehaviour
     void Awake()
     {
         saveButton.onClick.AddListener(async () => await SaveSingleData());
+        multiDataSaveButton.onClick.AddListener(async () =>
+        {
+
+        });
+    }
+
+    private async Task SaveMultiData<T>(string key, T saveData)
+    {
+        // 딕셔너리 데이터를 저장
+        var data = new Dictionary<string, object>
+        {
+            {key, saveData}
+        };
+
+        // 저장 메소드 호출
+        await CloudSaveService.Instance.Data.Player.SaveAsync(data);
     }
 
     private async Task SaveSingleData()
