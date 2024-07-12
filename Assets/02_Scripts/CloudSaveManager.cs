@@ -28,6 +28,9 @@ public class CloudSaveManager : MonoBehaviour
 {
     [SerializeField] private Button saveButton;
     [SerializeField] private Button multiDataSaveButton;
+    [SerializeField] private Button loadDataButton;
+
+
     [SerializeField] private PlayerData playerData;
 
     void Awake()
@@ -39,6 +42,19 @@ public class CloudSaveManager : MonoBehaviour
         });
     }
 
+    async Task LoadData<T>(string key)
+    {
+        var loadData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { key });
+
+        loadData.TryGetValue(key, out var data);
+
+        // JSon 출력
+        string jsonStr = JsonUtility.ToJson(data.Value.GetAs<PlayerData>());
+        Debug.Log(jsonStr);
+        playerData = JsonUtility.FromJson<PlayerData>(jsonStr);
+    }
+
+
     private async Task SaveMultiData<T>(string key, T saveData)
     {
         // 딕셔너리 데이터를 저장
@@ -49,6 +65,9 @@ public class CloudSaveManager : MonoBehaviour
 
         // 저장 메소드 호출
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+
+        Debug.Log("저장 완료");
+        playerData = new PlayerData();
     }
 
     private async Task SaveSingleData()
