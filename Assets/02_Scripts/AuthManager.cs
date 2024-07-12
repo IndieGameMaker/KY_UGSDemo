@@ -10,6 +10,7 @@ using Unity.Services.Authentication;
 public class AuthManager : MonoBehaviour
 {
     [SerializeField] private Button signInButton;
+    [SerializeField] private Button signOutButton;
     [SerializeField] private TMP_Text messageText;
 
     private async void Awake()
