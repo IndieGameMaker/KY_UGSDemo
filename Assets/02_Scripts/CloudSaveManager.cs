@@ -27,6 +27,7 @@ public struct ItemData
 public class CloudSaveManager : MonoBehaviour
 {
     [SerializeField] private Button saveButton;
+    [SerializeField] private Button multiDataSaveButton;
     [SerializeField] private PlayerData playerData;
 
     void Awake()
