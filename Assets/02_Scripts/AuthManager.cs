@@ -46,6 +46,11 @@ public class AuthManager : MonoBehaviour
         };
 
         // 세션 종료
+        AuthenticationService.Instance.Expired += () =>
+        {
+            messageText.text = "Player Session Expired !!!";
+        };
+
     }
 
     // 익명 로그인
