@@ -4,6 +4,7 @@ using TMPro;
 using System;
 using Unity.Services.Core;
 using System.Threading.Tasks;
+using Unity.Services.Authentication;
 
 public class AuthManager2 : MonoBehaviour
 {
@@ -26,6 +27,17 @@ public class AuthManager2 : MonoBehaviour
     // 회원가입
     async Task SignUpUsernamePassword(string username, string password)
     {
+        try
+        {
+            await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
+        }
+        catch (AuthenticationException ex)
+        {
 
+        }
+        catch (RequestFailedException ex)
+        {
+
+        }
     }
 }
