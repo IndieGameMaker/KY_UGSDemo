@@ -8,6 +8,12 @@ using Unity.Services.Authentication;
 
 public class AuthManager2 : MonoBehaviour
 {
+    /*
+        - 회원이름 : 대소문자 구별없음, 3자 ~ 20자 [- @ 사용가능]
+        - 비밀번호 : 8자 ~ 30자, 대소문자 구별, 숫자 1, 대문자 1, 소문자 1, 특수문자 1 [! @ # _]
+    
+    */
+
     [SerializeField] private Button signUpButton, signInButton;
     [SerializeField] private TMP_InputField userNameText, passwordText;
 
