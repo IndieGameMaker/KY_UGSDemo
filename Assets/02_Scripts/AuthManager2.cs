@@ -58,5 +58,23 @@ public class AuthManager2 : MonoBehaviour
         {
             Debug.LogError(ex.Message);
         }
+
+        // 로그인 로직
+        async Task SignIn(string username, string password)
+        {
+            try
+            {
+                await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
+            }
+            catch (AuthenticationException e)
+            {
+                Debug.LogError(e.Message);
+            }
+            catch (RequestFailedException e)
+            {
+                Debug.LogError(e.Message);
+            }
+
+        }
     }
 }
