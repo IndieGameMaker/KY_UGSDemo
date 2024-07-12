@@ -45,6 +45,7 @@ public class AuthManager2 : MonoBehaviour
         {
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
             Debug.Log($"회원가입 완료 : {AuthenticationService.Instance.PlayerId}");
+            PlayerPrefs.SetString("USER_NAME", username);
         }
         catch (AuthenticationException ex)
         {
