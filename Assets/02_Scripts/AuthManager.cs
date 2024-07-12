@@ -27,6 +27,12 @@ public class AuthManager : MonoBehaviour
             // 익명 로그인 메소드 호출
             await SignInAsync();
         });
+
+        // 로그 아웃
+        signOutButton.onClick.AddListener(() =>
+        {
+            AuthenticationService.Instance.SignOut();
+        });
     }
 
     private void EventConfig()
