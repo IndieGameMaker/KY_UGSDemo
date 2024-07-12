@@ -43,7 +43,7 @@ public class AuthManager2 : MonoBehaviour
     {
         try
         {
-            await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
+            await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
             Debug.Log("회원가입 완료");
         }
         catch (AuthenticationException ex)
