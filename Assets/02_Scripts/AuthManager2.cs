@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Unity.Services.Core;
+using System.Threading.Tasks;
 
 public class AuthManager2 : MonoBehaviour
 {
@@ -20,5 +21,11 @@ public class AuthManager2 : MonoBehaviour
         {
             Debug.LogError(e.Message);
         }
+    }
+
+    // 회원가입
+    async Task SignUpUsernamePassword(string username, string password)
+    {
+
     }
 }
