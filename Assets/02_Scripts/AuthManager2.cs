@@ -70,6 +70,8 @@ public class AuthManager2 : MonoBehaviour
     {
         try
         {
+            //await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword, newPassword);
+
             await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
             Debug.Log($"로그인 완료 : {AuthenticationService.Instance.PlayerId}");
         }
