@@ -40,6 +40,10 @@ public class CloudSaveManager : MonoBehaviour
         {
             await SaveMultiData<PlayerData>("PlayerData", playerData);
         });
+        loadDataButton.onClick.AddListener(async () =>
+        {
+            await LoadData<string>("PlayerData");
+        });
     }
 
     async Task LoadData<T>(string key)
