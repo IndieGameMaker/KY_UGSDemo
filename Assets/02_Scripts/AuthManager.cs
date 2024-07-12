@@ -39,7 +39,10 @@ public class AuthManager : MonoBehaviour
         });
 
         // 플레이어 이름 변경
-        //playerNameSaveButton.onClick.AddListener
+        playerNameSaveButton.onClick.AddListener(async () =>
+        {
+            await SetPlayerName(playerNameIf.text);
+        });
     }
 
     private async Task SetPlayerName(string playerName)
@@ -51,9 +54,9 @@ public class AuthManager : MonoBehaviour
 
             messageText.text = $"\nPlayerName : {AuthenticationService.Instance.PlayerName}";
         }
-        catch ()
+        catch (AuthenticationException e)
         {
-
+            Debug.LogError(e.Message);
         }
     }
 
