@@ -25,6 +25,15 @@ public class AuthManager : MonoBehaviour
         });
     }
 
+    private void EventConfig()
+    {
+        // 로그인
+
+        // 로그 아웃
+        // 로그인 실패
+        // 세션 종료
+    }
+
     // 익명 로그인
     private async Task SignInAsync()
     {
