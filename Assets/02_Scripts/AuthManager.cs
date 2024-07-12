@@ -40,6 +40,11 @@ public class AuthManager : MonoBehaviour
         };
 
         // 로그인 실패
+        AuthenticationService.Instance.SignInFailed += (ex) =>
+        {
+            messageText.text = $"Login Failed : {ex.Message}";
+        };
+
         // 세션 종료
     }
 
