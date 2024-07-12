@@ -153,7 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signInButton: {fileID: 424963007}
   signOutButton: {fileID: 1239507571}
+  playerNameSaveButton: {fileID: 1191005821}
   messageText: {fileID: 1001548630}
+  playerNameIf: {fileID: 1438745032}
 --- !u!4 &189051615
 Transform:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class AuthManager : MonoBehaviour
         EventConfig();
 
         // 버튼 이벤트 연결
+        // 로그인
         signInButton.onClick.AddListener(async () =>
         {
             // 익명 로그인 메소드 호출
@@ -36,6 +37,24 @@ public class AuthManager : MonoBehaviour
         {
             AuthenticationService.Instance.SignOut();
         });
+
+        // 플레이어 이름 변경
+        //playerNameSaveButton.onClick.AddListener
+    }
+
+    private async Task SetPlayerName(string playerName)
+    {
+        try
+        {
+            await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
+            Debug.Log($"{playerName} updated!");
+
+            messageText.text = $"\nPlayerName : {AuthenticationService.Instance.PlayerName}";
+        }
+        catch ()
+        {
+
+        }
     }
 
     private void EventConfig()
