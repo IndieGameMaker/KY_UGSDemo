@@ -35,7 +35,7 @@ public class CloudSaveManager : MonoBehaviour
         saveButton.onClick.AddListener(async () => await SaveSingleData());
         multiDataSaveButton.onClick.AddListener(async () =>
         {
-
+            await SaveMultiData<PlayerData>("PlayerData", playerData);
         });
     }
 
