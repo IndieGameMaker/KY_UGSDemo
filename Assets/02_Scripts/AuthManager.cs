@@ -11,7 +11,10 @@ public class AuthManager : MonoBehaviour
 {
     [SerializeField] private Button signInButton;
     [SerializeField] private Button signOutButton;
+    [SerializeField] private Button playerNameSaveButton;
+
     [SerializeField] private TMP_Text messageText;
+    [SerializeField] private TMP_InputField playerNameIf;
 
     private async void Awake()
     {
