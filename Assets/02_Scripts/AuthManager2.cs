@@ -24,20 +24,29 @@ public class AuthManager2 : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        signUpButton.onClick.AddListener(async () =>
+        {
+            await SignUpUsernamePassword(userNameText.text, passwordText.text);
+        });
+    }
+
     // 회원가입
     async Task SignUpUsernamePassword(string username, string password)
     {
         try
         {
             await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
+            Debug.Log("회원가입 완료");
         }
         catch (AuthenticationException ex)
         {
-
+            Debug.LogError($"회원가입 실패 {ex.Message}");
         }
         catch (RequestFailedException ex)
         {
-
+            Debug.LogError(ex.Message);
         }
     }
 }
