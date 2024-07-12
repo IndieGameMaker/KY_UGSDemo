@@ -28,6 +28,10 @@ public class AuthManager : MonoBehaviour
     private void EventConfig()
     {
         // 로그인
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            messageText.text = $"Player ID:{AuthenticationService.Instance.PlayerId}";
+        };
 
         // 로그 아웃
         // 로그인 실패
