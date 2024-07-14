@@ -70,6 +70,11 @@ public class CloudSaveManager : MonoBehaviour
         // 저장 메소드 호출
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
 
+        var gameData = new Dictionary<string, object>{
+            {"ver", "0.1"},
+            {"lastUpdate", "2024-01-25"}
+        };
+
         Debug.Log("저장 완료");
         playerData = new PlayerData();
     }
