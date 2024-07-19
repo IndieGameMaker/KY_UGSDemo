@@ -10,6 +10,8 @@ using UnityEngine;
 public class RCManager : MonoBehaviour
 {
     [SerializeField] private float mummyScale;
+    [SerializeField] private float moveSpeed, attackDamage;
+
     [SerializeField] private Transform mummy;
 
     private async Task Awake()
@@ -27,6 +29,10 @@ public class RCManager : MonoBehaviour
         RemoteConfigService.Instance.FetchCompleted += (response) =>
         {
             mummyScale = RemoteConfigService.Instance.appConfig.GetFloat("mummy_scale");
+            moveSpeed = RemoteConfigService.Instance.appConfig.GetFloat("move_speed");
+            attackDamage = RemoteConfigService.Instance.appConfig.GetFloat("attack_damage");
+
+
             Debug.Log("Mummy Scale :" + mummyScale);
             mummy.localScale = Vector3.one * mummyScale;//new Vector3(mummyScale, mummyScale, mummyScale)
         };
