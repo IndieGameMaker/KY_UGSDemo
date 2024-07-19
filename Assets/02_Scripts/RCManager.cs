@@ -13,7 +13,7 @@ public class RCManager : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-
+            Debug.Log("Player ID :" + AuthenticationService.Instance.PlayerId);
         };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
