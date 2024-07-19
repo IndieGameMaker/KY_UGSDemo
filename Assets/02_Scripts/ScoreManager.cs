@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using Unity.Services.Leaderboards;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     private string playerId;
+    private const string leaderboardId = "Ranking";
 
     [Header("UI Setting")]
     [SerializeField] private TMP_InputField scoreIf;
@@ -23,6 +25,9 @@ public class ScoreManager : MonoBehaviour
 
         // 익명로그인 처리
         await SignIn();
+
+        // 버튼 이벤트 연결
+        scoreSaveButton.onClick.AddListener(() => AddScore(int.Parse(scoreIf.text)));
     }
 
     private async Task SignIn()
@@ -36,5 +41,12 @@ public class ScoreManager : MonoBehaviour
 
         // 로그인
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
+    private async void AddScore(int score)
+    {
+        // 점수 기록
+        await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, score);
+        Debug.Log("점수저장 완료");
     }
 }
