@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: '[]'
-  _rsLastCachedKeyList: '[]'
-  _environments: '[]'
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"582a549c-c4a1-4fda-bd3c-c53df83a0756\"\n   
+    },\n    \"rs\": {\n      \"key\": \"mummy_scale\",\n      \"type\": \"float\",\n     
+    \"value\": 1.0\n    }\n  }\n]"
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"582a549c-c4a1-4fda-bd3c-c53df83a0756\"\n   
+    },\n    \"rs\": {\n      \"key\": \"mummy_scale\",\n      \"type\": \"float\",\n     
+    \"value\": 1.0\n    }\n  }\n]"
+  _environments: "[\n  {\n    \"projectId\": \"de0a19af-991a-4898-8a5f-d117277f6dd9\",\n   
+    \"name\": \"production\",\n    \"id\": \"57843524-63ec-4f25-a82a-c39b4a5ff9de\",\n   
+    \"isDefault\": true,\n    \"createdAt\": \"2024-07-12T04:15:43Z\",\n    \"updatedAt\":
+    \"2024-07-12T04:15:43Z\"\n  },\n  {\n    \"projectId\": \"de0a19af-991a-4898-8a5f-d117277f6dd9\",\n   
+    \"name\": \"develop\",\n    \"id\": \"7996d282-92c3-4726-8359-a21651a53258\",\n   
+    \"isDefault\": false,\n    \"createdAt\": \"2024-07-19T05:55:25Z\",\n    \"updatedAt\":
+    \"2024-07-19T05:55:25Z\"\n  }\n]"
