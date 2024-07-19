@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -46,7 +47,8 @@ public class ScoreManager : MonoBehaviour
     private async void AddScore(int score)
     {
         // 점수 기록
-        await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, score);
-        Debug.Log("점수저장 완료");
+        var response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, score);
+
+        Debug.Log($"점수저장 완료 \n {JsonConvert.SerializeObject(response)}");
     }
 }
