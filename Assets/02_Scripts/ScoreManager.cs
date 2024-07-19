@@ -7,6 +7,7 @@ using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Leaderboards;
+using Unity.Services.Leaderboards.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class ScoreManager : MonoBehaviour
     [Header("UI Setting")]
     [SerializeField] private TMP_InputField scoreIf;
     [SerializeField] private Button scoreSaveButton;
+    [SerializeField] private Button scoreViewButton;
 
     private async void Awake()
     {
@@ -28,7 +30,33 @@ public class ScoreManager : MonoBehaviour
         await SignIn();
 
         // 버튼 이벤트 연결
-        scoreSaveButton.onClick.AddListener(() => AddScore(int.Parse(scoreIf.text)));
+        scoreSaveButton.onClick.AddListener(() =>
+        {
+            AddScore(int.Parse(scoreIf.text));
+        });
+
+        // 점수 조회 버튼 이벤트 연결
+        scoreViewButton.onClick.AddListener(async () => await GetScores());
+    }
+
+    public List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
+
+    private async Task GetScores()
+    {
+        var result = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId);
+
+        Debug.Log($"Json : {JsonConvert.SerializeObject(result)}");
+
+        entries = result.Results;
+
+        string rank = "";
+
+        // 모든 점수를 표시
+        foreach (var entry in entries)
+        {
+            rank += $"";
+        }
+
     }
 
     private async Task SignIn()
@@ -54,7 +82,7 @@ public class ScoreManager : MonoBehaviour
         {
             var result = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
             // 점수 표시
-
+            scoreIf.text = result.Score.ToString();
         }
         catch (Exception e)
         {
