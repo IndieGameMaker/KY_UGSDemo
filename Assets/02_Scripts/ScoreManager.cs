@@ -54,7 +54,7 @@ public class ScoreManager : MonoBehaviour
         // 모든 점수를 표시
         foreach (var entry in entries)
         {
-            rank += $"";
+            rank += $"[{entry.Rank}] {entry.PlayerId} : {entry.Score}\n";
         }
 
     }
