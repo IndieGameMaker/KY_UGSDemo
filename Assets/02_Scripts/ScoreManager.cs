@@ -27,5 +27,8 @@ public class ScoreManager : MonoBehaviour
             playerId = AuthenticationService.Instance.PlayerId;
             Debug.Log($"로그인 성공 \nPlayer Id: {playerId}");
         };
+
+        // 로그인
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 }
