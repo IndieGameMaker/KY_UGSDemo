@@ -10,6 +10,7 @@ using UnityEngine;
 public class RCManager : MonoBehaviour
 {
     [SerializeField] private float mummyScale;
+    [SerializeField] private Transform mummy;
 
     private async Task Awake()
     {
@@ -27,6 +28,7 @@ public class RCManager : MonoBehaviour
         {
             mummyScale = RemoteConfigService.Instance.appConfig.GetFloat("mummy_scale");
             Debug.Log("Mummy Scale :" + mummyScale);
+            mummy.localScale = Vector3.one * mummyScale;//new Vector3(mummyScale, mummyScale, mummyScale)
         };
 
         // 리모트 값 조회
