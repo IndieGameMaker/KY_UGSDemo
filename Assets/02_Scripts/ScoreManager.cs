@@ -34,14 +34,32 @@ public class ScoreManager : MonoBehaviour
     private async Task SignIn()
     {
         // 로그인 성공시에 호출할 이벤트를 연결
-        AuthenticationService.Instance.SignedIn += () =>
+        AuthenticationService.Instance.SignedIn += async () =>
         {
             playerId = AuthenticationService.Instance.PlayerId;
             Debug.Log($"로그인 성공 \nPlayer Id: {playerId}");
+
+            // 기존 점수 조회
+            await GetPlayerScore();
         };
 
         // 로그인
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
+    // 플레이어 점수 조회
+    private async Task GetPlayerScore()
+    {
+        try
+        {
+            var result = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
+            // 점수 표시
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
     }
 
     private async void AddScore(int score)
