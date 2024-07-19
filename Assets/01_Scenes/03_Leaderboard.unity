@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreIf: {fileID: 285550696}
   scoreSaveButton: {fileID: 1232307825}
+  scoreViewButton: {fileID: 1801689295}
 --- !u!4 &1448647122
 Transform:
   m_ObjectHideFlags: 0

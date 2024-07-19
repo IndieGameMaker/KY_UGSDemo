@@ -43,7 +43,8 @@ public class ScoreManager : MonoBehaviour
 
     private async Task GetScores()
     {
-        var result = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId);
+        var option = new GetScoresOptions { Offset = 25, Limit = 50 };
+        var result = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId, option);
 
         Debug.Log($"Json : {JsonConvert.SerializeObject(result)}");
 
